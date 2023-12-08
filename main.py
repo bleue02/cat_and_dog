@@ -40,8 +40,7 @@ def image_path():
     # cats_train의 샘플 수와 동일한 길이의 0으로 이루어진 리스트를 생성합니다.
     # len(dogs_train): 이 부분은 dogs_train 배열의 샘플 수를 계산
     # [1] * len(dogs_train): 이것은 dogs_train의 샘플 수와 동일한 길이의 1로 이루어진 리스트를 생성
-    # : 두 리스트(0으로 이루어진 것과 1로 이루어진 것)는 + 연산자를 사용하여 연결
-    # 배열의 첫 번째 절반은 cats_train 샘플에 해당하며 0으로 레이블이 지정되고, 두 번째 절반은 dogs_train 샘플에 해당하며 1로 레이블이 지정
+    # : 두 리스트(0으로 이루어진 것과 1로 이루어진 것)는 + 연산자를 사용하여 연결    # 배열의 첫 번째 절반은 cats_train 샘플에 해당하며 0으로 레이블이 지정되고, 두 번째 절반은 dogs_train 샘플에 해당하며 1로 레이블이 지정
     X_train = np.append(cats_train_images, dogs_train_images, axis=0)
     X_test = np.append(cats_test_images, dogs_test_images, axis=0)
 
@@ -151,7 +150,7 @@ class CNN(nn.Module):
         self.dropout = nn.Dropout(p=0.5)
         self.fc0 = nn.Linear(in_features=128 * 6 * 6, out_features=64)
         self.fc1 = nn.Linear(in_features=64, out_features=32)
-        self.fc2 = nn.Linear(in_features=32, out_features=1)
+        self.fc2 = nn.Linear(in_features=32, out_features=32)
 
     def forward(self, x):
         x = F.relu(self.bn0(self.conv0(x)))
